@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const configureDB = require('./config/database')
 const router = require('./config/routes')
+const startCron = require('./app/cron-job/cron')
+const cron = require('node-cron')
 
 const app = express()
 
@@ -16,3 +18,5 @@ const port = process.env.PORT || 3040
 app.listen(port, ()=>{
     console.log('server is running on port',port)
 })
+
+startCron()
