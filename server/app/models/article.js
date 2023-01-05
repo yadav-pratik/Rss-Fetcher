@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const articleSchema = new Schema({
     date_published : {
-        type : String,
+        type : String
     },
     guid : {
         type : String,

@@ -3,7 +3,6 @@ const cors = require('cors')
 const configureDB = require('./config/database')
 const router = require('./config/routes')
 const startCron = require('./app/cron-job/cron')
-const cron = require('node-cron')
 
 const app = express()
 
