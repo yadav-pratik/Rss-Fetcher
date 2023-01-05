@@ -1,9 +1,11 @@
+import React from "react"
 
+import NavBar from "./components/NavBar";
 
 const App = (props) => {
   return (
     <div className="App">
-      <h1>Rss Fetcher</h1>
+        <NavBar />
     </div>
   )
 }
