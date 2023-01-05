@@ -1,6 +1,8 @@
 import React from "react"
 import { useSelector, useDispatch} from 'react-redux'
 
+import { setSource } from "../../actions/sourceActions"
+
 const UserSelection = (props) => {
     const categories = ['latest', 'india', 'technology', 'cricket']
 
@@ -16,7 +18,7 @@ const UserSelection = (props) => {
     const handleChange = (e) => {
         const name = e.target.name
         if(name === 'source'){
-            dispatch()
+            dispatch(setSource(e.target.value))
         } else if(name === 'category'){
             dispatch()
         }
@@ -24,6 +26,7 @@ const UserSelection = (props) => {
 
     return (
         <div>
+            <h2>You are seeing the {category.charAt(0).toUpperCase() + category.slice(1)} articles from {source}</h2>
             <form>
                 <label>Change the Source of Articles</label>
                 <select 
