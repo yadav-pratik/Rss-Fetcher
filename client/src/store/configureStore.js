@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import isLoggedReducer from '../reducers/isLoggedReducer'
 import sourceReducer from '../reducers/sourceReducer'
 import categoryReducer from '../reducers/categoryReducer'
+import articlesReducer from '../reducers/articlesReducer'
 
 
 const configureStore = () => {
@@ -12,7 +13,8 @@ const configureStore = () => {
         // user : userReducer,
         isLogged : isLoggedReducer,
         source : sourceReducer,
-        category : categoryReducer
+        category : categoryReducer,
+        articles : articlesReducer
     }), applyMiddleware(thunk))
 }
 
