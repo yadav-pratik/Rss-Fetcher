@@ -6,7 +6,7 @@ const sourceReducer = (state = initialSourceValue, action) => {
             return action.payload
         }
         default : {
-            return initialSourceValue
+            return state
         }
     }
 }

@@ -2,6 +2,7 @@ import React from "react"
 import { useSelector, useDispatch} from 'react-redux'
 
 import { setSource } from "../../actions/sourceActions"
+import { setCategory } from "../../actions/categoryActions"
 
 const UserSelection = (props) => {
     const categories = ['latest', 'india', 'technology', 'cricket']
@@ -20,7 +21,7 @@ const UserSelection = (props) => {
         if(name === 'source'){
             dispatch(setSource(e.target.value))
         } else if(name === 'category'){
-            dispatch()
+            dispatch(setCategory(e.target.value))
         }
     }
 
