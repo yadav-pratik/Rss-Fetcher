@@ -26,7 +26,10 @@ const PaginationComp = (props) => {
     return (
         <div>
             <Pagination>{items}</Pagination>
-            
+            <form>
+                <label>Articles per page</label>
+                {/* <select value={} onChange={()=>dispatch()}></select> */}
+            </form>
         </div>
     )
 }

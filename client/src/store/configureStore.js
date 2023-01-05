@@ -7,6 +7,7 @@ import sourceReducer from '../reducers/sourceReducer'
 import categoryReducer from '../reducers/categoryReducer'
 import articlesReducer from '../reducers/articlesReducer'
 import pageNoReducer from '../reducers/pageNoReducer'
+import postsPerPageReducer from '../reducers/postsPerPageReducer'
 
 
 const configureStore = () => {
@@ -16,7 +17,8 @@ const configureStore = () => {
         source : sourceReducer,
         category : categoryReducer,
         articles : articlesReducer,
-        pageNo : pageNoReducer
+        pageNo : pageNoReducer,
+        postsPerPage : postsPerPageReducer
     }), applyMiddleware(thunk))
 }
 
