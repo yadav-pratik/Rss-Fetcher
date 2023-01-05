@@ -6,6 +6,7 @@ import isLoggedReducer from '../reducers/isLoggedReducer'
 import sourceReducer from '../reducers/sourceReducer'
 import categoryReducer from '../reducers/categoryReducer'
 import articlesReducer from '../reducers/articlesReducer'
+import pageNoReducer from '../reducers/pageNoReducer'
 
 
 const configureStore = () => {
@@ -14,7 +15,8 @@ const configureStore = () => {
         isLogged : isLoggedReducer,
         source : sourceReducer,
         category : categoryReducer,
-        articles : articlesReducer
+        articles : articlesReducer,
+        pageNo : pageNoReducer
     }), applyMiddleware(thunk))
 }
 
