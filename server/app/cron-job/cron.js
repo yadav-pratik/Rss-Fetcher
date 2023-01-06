@@ -8,9 +8,13 @@ const startCron = () => {
     // TOI Latest
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeedmostrecent.cms')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://timesofindia.indiatimes.com/rssfeedmostrecent.cms&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
-                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'latest'}
+                return {...article, 
+                    pubDate : article.pubDate.split(' ').join('T'), 
+                    source : 'TOI', 
+                    category : 'latest'
+                }
             })
             const insertedArticles = await Article.insertMany(articles, {ordered : false})
         } catch (error) {
@@ -25,9 +29,13 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/54829575.cms')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://timesofindia.indiatimes.com/rssfeeds/54829575.cms&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
-                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'cricket'}
+                return {...article, 
+                    pubDate : article.pubDate.split(' ').join('T'), 
+                    source : 'TOI', 
+                    category : 'cricket'
+                }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -41,9 +49,13 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
-                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'india'}
+                return {...article, 
+                    pubDate : article.pubDate.split(' ').join('T'), 
+                    source : 'TOI', 
+                    category : 'india'
+                }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -57,9 +69,13 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/66949542.cms')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://timesofindia.indiatimes.com/rssfeeds/66949542.cms&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
-                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'technology'}
+                return {...article, 
+                    pubDate : article.pubDate.split(' ').join('T'), 
+                    source : 'TOI', 
+                    category : 'technology'
+                }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -73,7 +89,7 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-latest')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://feeds.feedburner.com/ndtvnews-latest&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
              const articles = data.items.map(article => {
                  return {...article, 
                         thumbnail : article.enclosure ? article.enclosure.link : "",
@@ -94,7 +110,7 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-india-news')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://feeds.feedburner.com/ndtvnews-india-news&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
                 return {...article, 
                         thumbnail : article.enclosure ? article.enclosure.link : "",
@@ -115,7 +131,7 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/gadgets360-latest')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://feeds.feedburner.com/gadgets360-latest&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
                 return {...article, 
                         thumbnail : article.enclosure ? article.enclosure.link : "",
@@ -136,7 +152,7 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvsports-cricket')
+            const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://feeds.feedburner.com/ndtvsports-cricket&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
                 return {...article, 
                         thumbnail : article.enclosure ? article.enclosure.link : "",
