@@ -32,7 +32,6 @@ usersController.login = async (req, res) => {
         const user = await User.findOne({email})
         if(user){   
             const match = await bcrypt.compare(password, user.password)
-            console.log(match)
             if(match){
                 const tokenData = {
                     _id : user._id,
