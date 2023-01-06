@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { Modal } from "react-bootstrap"
 
 import Login from "./user/Login"
+import Register from "./user/Register"
 
 import { doLoginToggle } from "../actions/loginToggleActions"
+import { doRegisterToggle } from "../actions/registerToggleAction"
 
 const ModalComp = (props) => {
     const dispatch = useDispatch()
@@ -13,19 +15,32 @@ const ModalComp = (props) => {
         return state.loginToggle
     })
 
+    const registerToggle = useSelector((state)=>{
+        return state.registerToggle
+    })
+
+    const handleModalHide = () => {
+        if(loginToggle){
+            dispatch(doLoginToggle())
+        } else if(registerToggle){
+            dispatch(doRegisterToggle())
+        }
+    }
+
     return (
-        <Modal show={loginToggle} 
-        onHide={()=>{dispatch(doLoginToggle())}}
+        <Modal 
+            show={loginToggle || registerToggle} 
+            onHide={handleModalHide}
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    {loginToggle ? 'Login to your Account' : 'Register with us'}
+                    {loginToggle ? 'Login to your Account' : registerToggle && 'Register with us'}
                 </Modal.Title>
                 
             </Modal.Header>
             
             <Modal.Body> 
-                {loginToggle ? <Login /> : null}
+                {loginToggle ? <Login /> : registerToggle && <Register/>}
             </Modal.Body>
         </Modal>
     )

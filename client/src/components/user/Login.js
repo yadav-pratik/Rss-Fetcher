@@ -4,6 +4,7 @@ import isEmail from 'validator/lib/isEmail'
 
 import { toggleIsLogged } from "../../actions/isLoggedActions"
 import { doLoginToggle } from "../../actions/loginToggleActions"
+import { doRegisterToggle } from "../../actions/registerToggleAction"
 import { startLoginUser } from "../../actions/userActions"
 
 const Login = (props) => {
@@ -15,6 +16,11 @@ const Login = (props) => {
     const dispatch = useDispatch()
 
     const validationStyle = {color : 'red'}
+
+    const handleRegisterToggle = () => {
+        dispatch(doLoginToggle())
+        dispatch(doRegisterToggle())
+    }
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -96,7 +102,7 @@ const Login = (props) => {
                     style={{textAlign : 'center'}}
                 >New Here ? <button
                                 className="btn btn-outline-primary"
-                                onClick={()=>{}}
+                                onClick={handleRegisterToggle}
                             >Register first!
                             </button>
                 </p>
