@@ -1,4 +1,4 @@
-const initialSourceValue = 'TOI'
+const initialSourceValue = 'NDTV'
 
 const sourceReducer = (state = initialSourceValue, action) => {
     switch(action.type){
