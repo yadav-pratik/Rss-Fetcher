@@ -1,13 +1,14 @@
 import axios from 'axios'
 
+import { normalAlert } from '../sweetAlerts/sweetAlerts'
+
 export const startGetArticles = (source, category, pageNo, posts) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`http://localhost:3040/api/articles/list/?source=${source}&category=${category}&page=${pageNo}&posts=${posts}`)
-            console.log(data)
             dispatch(setArticles(data))
         } catch (error) {
-            alert(error)
+            normalAlert(error, 'error')
         }
     }
 }
