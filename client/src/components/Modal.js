@@ -1,5 +1,4 @@
 import React from "react"
-import Register from "./user/Register"
 
 import { Modal } from "react-bootstrap"
 
