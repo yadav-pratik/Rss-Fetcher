@@ -32,7 +32,6 @@ const NavBarComp = (props) => {
             dispatch(toggleIsLogged())
             dispatch(logoutUser())
         }
-
         handleLogout(logoutAndDispatch)
     }
 
@@ -43,25 +42,26 @@ const NavBarComp = (props) => {
                 variant="dark"
             >
                 <Container>
-                <Navbar.Brand as={Link} to="/">RSS Fetcher</Navbar.Brand>
-                <Navbar.Collapse className="justify-content-end">
-                    {isLogged ? (
-                            <>
-                                <Navbar.Text>
-                                    Signed in as: {user.name}
-                                </Navbar.Text>
-                                <Button variant="dark" onClick={handleLogoutClick}>Logout</Button>
-                            </>
-                        ) : (
-                            <>
-                                <Navbar.Text>
-                                    Welcome User
-                                </Navbar.Text>
-                                <Button variant="dark" onClick={()=>{dispatch(doLoginToggle())}}>Sign In</Button>
-                            </>
-                        )
-                    }
-                </Navbar.Collapse>
+                    <Navbar.Brand as={Link} to="/"><h3>RSS Fetcher</h3></Navbar.Brand>
+                    <Navbar.Collapse className="justify-content-end">
+                        {isLogged ? (
+                                <>
+                                    <Navbar.Text style={{marginRight : '10px'}}>
+                                        Signed in as: {user.name}
+                                    </Navbar.Text>
+                                    <Button 
+                                        variant="dark" onClick={handleLogoutClick}>Logout</Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Navbar.Text style={{marginRight : '10px'}}>
+                                        Welcome User
+                                    </Navbar.Text>
+                                    <Button variant="dark" onClick={()=>{dispatch(doLoginToggle())}}>Sign In</Button>
+                                </>
+                            )
+                        }
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </div>
