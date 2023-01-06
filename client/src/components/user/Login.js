@@ -1,13 +1,18 @@
 import React, { useState } from "react"
+import { useDispatch } from "react-redux"
 import isEmail from 'validator/lib/isEmail'
 
 import { toggleIsLogged } from "../../actions/isLoggedActions"
+import { doLoginToggle } from "../../actions/loginToggleActions"
+import { startLoginUser } from "../../actions/userActions"
 
 const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [formErrors, setFormErrors] = useState({})
     const errors = {}
+
+    const dispatch = useDispatch()
 
     const validationStyle = {color : 'red'}
 
@@ -47,14 +52,15 @@ const Login = (props) => {
             const clearAndDispatch = () => {
                 setEmail('')
                 setPassword('')
-                // dispatch(toggleIsLogged())
+                dispatch(toggleIsLogged())
+                dispatch(doLoginToggle())
             }
 
             const formData = {
                 email, password
             }
             
-            // dispatch(startLoginUser(formData, clearAndDispatch))
+            dispatch(startLoginUser(formData, clearAndDispatch))
 
         } else {
             setFormErrors(errors)
