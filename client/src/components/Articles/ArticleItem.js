@@ -18,13 +18,12 @@ const ArticleItem = (props) => {
         <div className="card bg-dark text-white border-dark mt-4 shadow" style={backgroundStyle}>
             <div className="card-img-overlay" >
                 <h5 className="card-title">{title}</h5>
-                <div className="d-flex flex-column justify-content-end">
+                <div className="d-flex flex-column justify-content-between" style={{height : "90%"}}>
                     <p className="card-text">{description}</p>
-                    <div className="row">
-                        <p className="card-text col-md-9">Published : {pubDate.split('T').join(' at ')}</p>
-                        <span className="col-md-3">
-                            <a 
-                                target="_blank" 
+                    <div className="d-flex justify-content-between">
+                        <p className="card-text">Published : {pubDate.split('T').join(' at ')}</p>
+                        <span>
+                            <a  target="_blank" 
                                 href={link} 
                                 style={anchorStyle}
                                 rel="noreferrer"
