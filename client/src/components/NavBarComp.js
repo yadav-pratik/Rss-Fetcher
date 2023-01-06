@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux"
 import {Navbar, Container, Button} from 'react-bootstrap'
 
 import { doLoginToggle } from "../actions/loginToggleActions"
+import { toggleIsLogged } from "../actions/isLoggedActions"
+
+import { handleLogout } from "../sweetAlerts/sweetAlerts"
 
 const NavBarComp = (props) => {
     const dispatch = useDispatch()
@@ -11,6 +14,15 @@ const NavBarComp = (props) => {
     const isLogged = useSelector((state)=>{
         return state.isLogged
     })
+
+    const handleLogoutClick = () => {
+        const logoutAndDispatch = () => {
+            localStorage.removeItem('token')
+            dispatch(toggleIsLogged())
+        }
+
+        handleLogout(logoutAndDispatch)
+    }
 
     return (
         <div>
@@ -27,7 +39,7 @@ const NavBarComp = (props) => {
                                 <Navbar.Text>
                                     Signed in as: Mark Otto
                                 </Navbar.Text>
-                                <Button variant="dark">Logout</Button>
+                                <Button variant="dark" onClick={handleLogoutClick}>Logout</Button>
                             </>
                         ) : (
                             <>

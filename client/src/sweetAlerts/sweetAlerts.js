@@ -7,3 +7,20 @@ export const normalAlert = (title, icon, text) => {
         icon : icon
     })
 }
+
+export const handleLogout = (logoutAndDispatch) => {
+    swal({
+        title : 'Sure you wanna Logout?',
+        icon : 'warning',
+        buttons : true,
+        })
+        .then((willLogout)=>{
+            if(willLogout) {
+                swal({
+                    title : 'Logged out Successfully',
+                    icon : 'success'
+                })
+                logoutAndDispatch()
+            }
+        })
+}
