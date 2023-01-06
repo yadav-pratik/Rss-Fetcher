@@ -47,14 +47,14 @@ const Login = (props) => {
             const clearAndDispatch = () => {
                 setEmail('')
                 setPassword('')
-                dispatch(toggleIsLogged())
+                // dispatch(toggleIsLogged())
             }
 
             const formData = {
                 email, password
             }
             
-            dispatch(startLoginUser(formData, clearAndDispatch))
+            // dispatch(startLoginUser(formData, clearAndDispatch))
 
         } else {
             setFormErrors(errors)
@@ -85,7 +85,7 @@ const Login = (props) => {
                     {formErrors.password ? <p style={validationStyle}>{formErrors.password}</p> : <br/>}
                     <input className="btn btn-primary" type='submit' value="Login" />
                 </form>
-                <p className="mt-2">New Here? <Link to="/user/register">Register first!</Link></p>
+                {/* <p className="mt-2">New Here? <Link to="/user/register">Register first!</Link></p> */}
         </div>
     )
 }

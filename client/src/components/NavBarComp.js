@@ -1,13 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
-
+import { useSelector, useDispatch } from "react-redux"
 import {Navbar, Container, Button} from 'react-bootstrap'
 
+import { doLoginToggle } from "../actions/loginToggleActions"
+
 const NavBarComp = (props) => {
+    const dispatch = useDispatch()
+
     const isLogged = useSelector((state)=>{
         return state.isLogged
     })
+
     return (
         <div>
             <Navbar 
@@ -30,7 +34,7 @@ const NavBarComp = (props) => {
                                 <Navbar.Text>
                                     Welcome User
                                 </Navbar.Text>
-                                <Button variant="dark">Sign In</Button>
+                                <Button variant="dark" onClick={()=>{dispatch(doLoginToggle())}}>Sign In</Button>
                             </>
                         )
                     }
