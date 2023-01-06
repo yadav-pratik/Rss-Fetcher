@@ -6,12 +6,12 @@ import { startGetArticles } from "../../actions/articlesActions"
 const ArticlesList = (props) => {
     const dispatch = useDispatch()
 
-    const {source, category} = useSelector((state)=>{
+    const {source, category, pageNo, postsPerPage} = useSelector((state)=>{
         return state
     })
     useEffect(()=>{
-        dispatch(startGetArticles(source, category))
-    },[source, category])
+        dispatch(startGetArticles(source, category, pageNo, postsPerPage))
+    },[source, category, pageNo, postsPerPage])
     return (
         <div>
             ArticlesList
