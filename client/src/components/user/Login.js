@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import isEmail from 'validator/lib/isEmail'
 
+import { toggleIsLogged } from "../../actions/isLoggedActions"
 
 const Login = (props) => {
     const [email, setEmail] = useState('')
