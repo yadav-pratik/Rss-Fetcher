@@ -21,7 +21,7 @@ const ArticleItem = (props) => {
                 <div className="d-flex flex-column justify-content-between" style={{height : "90%"}}>
                     <p className="card-text">{description}</p>
                     <div className="d-flex justify-content-between">
-                        <p className="card-text">Published : {pubDate.split('T').join(' at ')}</p>
+                        <p className="card-text">Published : {pubDate.split('T').join(' at ')} +5:30 IST</p>
                         <span>
                             <a  target="_blank" 
                                 href={link} 
