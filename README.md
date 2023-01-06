@@ -1,3 +1,4 @@
+
 # RSS Fetcher App
 
 The Application fetches data from the RSS feeds in the Backend and keeps updating its database every 2 minutes. On Client side we can see all these in the form of Articles.
@@ -12,6 +13,14 @@ The Application fetches data from the RSS feeds in the Backend and keeps updatin
 - User Authentication performed with help of libraries like 'bcryptjs' and 'jsonwebtoken'.
 - 'client' folder contains all the Front end files and 'server' folder contains all the server side files.
 
+
+## Screenshots
+
+![App Screenshot](https://i.postimg.cc/NjgnXjcj/Screenshot-11.png)
+
+![App Screenshot](https://i.postimg.cc/Hnzw1HP6/Screenshot-12.png)
+
+![App Screenshot](https://i.postimg.cc/T11wh637/Screenshot-13.png)
 
 ## Installation
 
