@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux"
 
 import { startGetArticles } from "../../actions/articlesActions"
 
+import ArticleItem from "./ArticleItem"
+
 const ArticlesList = (props) => {
     const dispatch = useDispatch()
 
-    const {source, category, pageNo, postsPerPage} = useSelector((state)=>{
+    const {source, category, pageNo, postsPerPage, articles} = useSelector((state)=>{
         return state
     })
     useEffect(()=>{
@@ -14,8 +16,12 @@ const ArticlesList = (props) => {
     },[source, category, pageNo, postsPerPage])
     return (
         <div>
-            ArticlesList
-    
+            {articles.map(article => {
+                return <ArticleItem
+                    key={article._id}
+                    {...article}
+                />
+            })}
         </div>
     )
 }
