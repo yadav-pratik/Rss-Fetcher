@@ -24,7 +24,7 @@ const NavBarComp = (props) => {
         if(isLogged){
             dispatch(startGetUser())
         }
-    }, [isLogged])
+    }, [isLogged, dispatch])
 
     const handleLogoutClick = () => {
         const logoutAndDispatch = () => {

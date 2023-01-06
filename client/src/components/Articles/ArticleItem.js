@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 const ArticleItem = (props) => {
     const {title, thumbnail, description, pubDate, link} = props
@@ -22,7 +22,15 @@ const ArticleItem = (props) => {
                     <p className="card-text">{description}</p>
                     <div className="row">
                         <p className="card-text col-md-9">Published : {pubDate.split('T').join(' at ')}</p>
-                        <span className="col-md-3"><a target="_blank" href={link} style={anchorStyle}>View Full Article {`>>`}</a></span>
+                        <span className="col-md-3">
+                            <a 
+                                target="_blank" 
+                                href={link} 
+                                style={anchorStyle}
+                                rel="noreferrer"
+                            >View Full Article {`>>`}
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>

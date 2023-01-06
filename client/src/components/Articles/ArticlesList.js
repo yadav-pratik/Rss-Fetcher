@@ -13,7 +13,7 @@ const ArticlesList = (props) => {
     })
     useEffect(()=>{
         dispatch(startGetArticles(source, category, pageNo, postsPerPage))
-    },[source, category, pageNo, postsPerPage])
+    },[source, category, pageNo, postsPerPage, dispatch])
     return (
         <div>
             {articles.length  ? (
