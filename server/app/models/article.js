@@ -3,20 +3,23 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const articleSchema = new Schema({
-    date_published : {
-        type : String
+    pubDate : {
+        type : String,
+        unique : true
     },
     guid : {
         type : String,
-        unique : true
     },
     title : {
         type : String
     },
-    url : {
+    link : {
         type : String
     },
-    summary : {
+    thumbnail : {
+        type : String
+    },
+    description : {
         type : String
     },
     source : {

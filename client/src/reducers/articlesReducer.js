@@ -6,7 +6,7 @@ const articlesReducer = (state = initialArticlesValue, action) => {
             return [...action.payload]
         }
         default : {
-            return [...initialArticlesValue]
+            return [...state]
         }
     }
 }

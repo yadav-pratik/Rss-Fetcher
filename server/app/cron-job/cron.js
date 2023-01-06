@@ -8,11 +8,11 @@ const startCron = () => {
     // TOI Latest
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://timesofindia.indiatimes.com/rssfeedmostrecent.cms')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeedmostrecent.cms')
             const articles = data.items.map(article => {
-                return {...article, source : 'TOI', category : 'latest'}
+                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'latest'}
             })
-            const insertedArticles = await Article.insertMany(articles,{ordered : false})
+            const insertedArticles = await Article.insertMany(articles, {ordered : false})
         } catch (error) {
             if(error.code !== 11000){
                 console.log(error)
@@ -25,9 +25,9 @@ const startCron = () => {
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://timesofindia.indiatimes.com/rssfeeds/54829575.cms')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/54829575.cms')
             const articles = data.items.map(article => {
-                return {...article, source : 'TOI', category : 'cricket'}
+                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'cricket'}
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -37,13 +37,13 @@ const startCron = () => {
         }
     })
 
-    //TOI India
+    // //TOI India
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms')
             const articles = data.items.map(article => {
-                return {...article, source : 'TOI', category : 'india'}
+                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'india'}
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -53,13 +53,13 @@ const startCron = () => {
         }
     })
 
-    //TOI technology
+    // //TOI technology
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://timesofindia.indiatimes.com/rssfeeds/66949542.cms')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://timesofindia.indiatimes.com/rssfeeds/66949542.cms')
             const articles = data.items.map(article => {
-                return {...article, source : 'TOI', category : 'technology'}
+                return {...article, pubDate : article.pubDate.split(' ').join('T'), source : 'TOI', category : 'technology'}
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -69,13 +69,18 @@ const startCron = () => {
         }
     })
 
-    //NDTV latest
+    // //NDTV latest
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://feeds.feedburner.com/ndtvnews-latest')
-            const articles = data.items.map(article => {
-                return {...article, source : 'NDTV', category : 'latest'}
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-latest')
+             const articles = data.items.map(article => {
+                 return {...article, 
+                        thumbnail : article.enclosure ? article.enclosure.link : "",
+                        pubDate : article.pubDate.split(' ').join('T'), 
+                        source : 'NDTV', 
+                        category : 'latest'
+                    }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -85,13 +90,18 @@ const startCron = () => {
         }
     })
 
-    //NDTV India
+    // //NDTV India
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://feeds.feedburner.com/ndtvnews-india-news')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-india-news')
             const articles = data.items.map(article => {
-                return {...article, source : 'NDTV', category : 'india'}
+                return {...article, 
+                        thumbnail : article.enclosure ? article.enclosure.link : "",
+                        pubDate : article.pubDate.split(' ').join('T'), 
+                        source : 'NDTV', 
+                        category : 'india'
+                    }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -101,13 +111,18 @@ const startCron = () => {
         }
     })
 
-    //NDTV technology
+    // //NDTV technology
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://feeds.feedburner.com/gadgets360-latest')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/gadgets360-latest')
             const articles = data.items.map(article => {
-                return {...article, source : 'NDTV', category : 'technology'}
+                return {...article, 
+                        thumbnail : article.enclosure ? article.enclosure.link : "",
+                        pubDate : article.pubDate.split(' ').join('T'), 
+                        source : 'NDTV', 
+                        category : 'technology'
+                    }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
@@ -117,13 +132,18 @@ const startCron = () => {
         }
     })
 
-    //NDTV cricket
+    // NDTV cricket
 
     cron.schedule('*/2 * * * *', async () => {
         try {
-            const { data } = await axios.get('https://www.toptal.com/developers/feed2json/convert?url=https://feeds.feedburner.com/ndtvsports-cricket')
+            const { data } = await axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvsports-cricket')
             const articles = data.items.map(article => {
-                return {...article, source : 'NDTV', category : 'cricket'}
+                return {...article, 
+                        thumbnail : article.enclosure ? article.enclosure.link : "",
+                        pubDate : article.pubDate.split(' ').join('T'), 
+                        source : 'NDTV', 
+                        category : 'cricket'
+                    }
             })
             const insertedArticles = await Article.insertMany(articles,{ordered : false})
         } catch (error) {
