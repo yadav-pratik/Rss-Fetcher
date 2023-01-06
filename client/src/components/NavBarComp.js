@@ -37,11 +37,10 @@ const NavBarComp = (props) => {
     }
 
     return (
-        <div>
+        <div className="sticky-top">
             <Navbar 
                 bg="primary" 
                 variant="dark"
-                sticky="top"
             >
                 <Container>
                 <Navbar.Brand as={Link} to="/">RSS Fetcher</Navbar.Brand>
