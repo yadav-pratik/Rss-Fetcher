@@ -9,6 +9,7 @@ import articlesReducer from '../reducers/articlesReducer'
 import pageNoReducer from '../reducers/pageNoReducer'
 import postsPerPageReducer from '../reducers/postsPerPageReducer'
 import loginToggleReducer from '../reducers/loginToggleReducer'
+import registerToggleReducer from '../reducers/registerToggleReducer'
 
 
 const configureStore = () => {
@@ -21,6 +22,7 @@ const configureStore = () => {
         pageNo : pageNoReducer,
         postsPerPage : postsPerPageReducer,
         loginToggle : loginToggleReducer,
+        registerToggle : registerToggleReducer
     }), applyMiddleware(thunk))
 }
 
