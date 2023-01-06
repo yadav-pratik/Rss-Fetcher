@@ -1,7 +1,7 @@
 import { createStore , combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
-// import userReducer from '../reducers/userReducer'
+import userReducer from '../reducers/userReducer'
 import isLoggedReducer from '../reducers/isLoggedReducer'
 import sourceReducer from '../reducers/sourceReducer'
 import categoryReducer from '../reducers/categoryReducer'
@@ -13,14 +13,14 @@ import loginToggleReducer from '../reducers/loginToggleReducer'
 
 const configureStore = () => {
     return createStore(combineReducers({
-        // user : userReducer,
+        user : userReducer,
         isLogged : isLoggedReducer,
         source : sourceReducer,
         category : categoryReducer,
         articles : articlesReducer,
         pageNo : pageNoReducer,
         postsPerPage : postsPerPageReducer,
-        loginToggle : loginToggleReducer
+        loginToggle : loginToggleReducer,
     }), applyMiddleware(thunk))
 }
 
