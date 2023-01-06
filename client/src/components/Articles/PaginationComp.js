@@ -13,7 +13,7 @@ const PaginationComp = (props) => {
     })
     
     let items = []
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 10; i++) {
         items.push(
             <Pagination.Item 
                 key={i} 
@@ -25,7 +25,7 @@ const PaginationComp = (props) => {
         )
     }
     return (
-        <div>
+        <div className="mt-4 d-flex justify-content-center">
             <Pagination>{items}</Pagination>
         </div>
     )

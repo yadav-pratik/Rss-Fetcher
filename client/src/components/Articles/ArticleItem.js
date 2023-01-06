@@ -15,7 +15,7 @@ const ArticleItem = (props) => {
         color : 'white'
     }
     return (
-        <div className="card bg-dark text-white border-dark mt-4 shadow" style={backgroundStyle}>
+        <div className="card bg-dark text-white border-dark mt-3 shadow" style={backgroundStyle}>
             <div className="card-img-overlay" >
                 <h5 className="card-title">{title}</h5>
                 <div className="d-flex flex-column justify-content-between" style={{height : "90%"}}>
