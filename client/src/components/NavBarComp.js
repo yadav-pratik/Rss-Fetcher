@@ -16,11 +16,15 @@ const NavBarComp = (props) => {
         return state.isLogged
     })
 
+    const user = useSelector((state)=> {
+        return state.user
+    })
+
     useEffect(()=>{
         if(isLogged){
             dispatch(startGetUser())
         }
-    })
+    }, [isLogged])
 
     const handleLogoutClick = () => {
         const logoutAndDispatch = () => {
@@ -45,7 +49,7 @@ const NavBarComp = (props) => {
                     {isLogged ? (
                             <>
                                 <Navbar.Text>
-                                    Signed in as: Mark Otto
+                                    Signed in as: {user.name}
                                 </Navbar.Text>
                                 <Button variant="dark" onClick={handleLogoutClick}>Logout</Button>
                             </>
