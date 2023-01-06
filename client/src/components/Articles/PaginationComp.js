@@ -3,7 +3,6 @@ import { Pagination } from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
 
 import { setPageNo } from "../../actions/pageNoActions"
-import { setPostsPerPage } from "../../actions/postsPerPageActions"
 
 const PaginationComp = (props) => {
     const dispatch = useDispatch()
