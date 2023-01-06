@@ -22,3 +22,33 @@ export const startLoginUser =  (formData, clearAndDispatch) => {
         }
     )
 }
+
+export const startGetUser = () => {
+    return (
+        async (dispatch) => {
+            try {
+                const {data} = await axios.get('http://localhost:3040/api/users/account',{
+                    headers : {
+                        authorization : localStorage.getItem('token')
+                    }
+                })
+                dispatch(setUser(data))
+            } catch (error) {
+                normalAlert(error.message, 'error')
+            }
+        }
+    )
+}
+
+const setUser = (user) => {
+    return {
+        type : 'SET_USER',
+        payload : user
+    }
+}
+
+export const logoutUser = () => {
+    return {
+        type : 'LOGOUT_USER'
+    }
+}
