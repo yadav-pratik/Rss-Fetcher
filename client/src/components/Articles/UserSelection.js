@@ -4,6 +4,7 @@ import { useSelector, useDispatch} from 'react-redux'
 import { setSource } from "../../actions/sourceActions"
 import { setCategory } from "../../actions/categoryActions"
 import { setPostsPerPage } from "../../actions/postsPerPageActions"
+import { setPageNo } from "../../actions/pageNoActions"
 
 const UserSelection = (props) => {
     const categories = ['latest', 'india', 'technology', 'cricket']
@@ -24,8 +25,10 @@ const UserSelection = (props) => {
         const name = e.target.name
         if(name === 'source'){
             dispatch(setSource(e.target.value))
+            dispatch(setPageNo(1))
         } else if(name === 'category'){
             dispatch(setCategory(e.target.value))
+            dispatch(setPageNo(1))
         }
     }
 
