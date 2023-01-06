@@ -33,6 +33,7 @@ const startCron = () => {
             const articles = data.items.map(article => {
                 return {...article, 
                     pubDate : article.pubDate.split(' ').join('T'), 
+                    description : article.description.split('>')[1],
                     source : 'TOI', 
                     category : 'cricket'
                 }
@@ -53,6 +54,7 @@ const startCron = () => {
             const articles = data.items.map(article => {
                 return {...article, 
                     pubDate : article.pubDate.split(' ').join('T'), 
+                    description : article.description.split('</a>')[1],
                     source : 'TOI', 
                     category : 'india'
                 }
@@ -72,7 +74,8 @@ const startCron = () => {
             const { data } = await axios.get(`${process.env.BASE_URL}?rss_url=https://timesofindia.indiatimes.com/rssfeeds/66949542.cms&count=${process.env.ARTICLES_COUNT}&api_key=${process.env.API_KEY}`)
             const articles = data.items.map(article => {
                 return {...article, 
-                    pubDate : article.pubDate.split(' ').join('T'), 
+                    pubDate : article.pubDate.split(' ').join('T'),
+                    description : article.description.split('</a>')[1], 
                     source : 'TOI', 
                     category : 'technology'
                 }
