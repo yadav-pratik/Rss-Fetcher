@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from "react-redux"
 import isEmail from 'validator/lib/isEmail'
 
-
+import { startRegisterUser } from '../../actions/userActions'
+import { doRegisterToggle } from '../../actions/registerToggleAction'
+import { doLoginToggle } from '../../actions/loginToggleActions'
 
 const Register = (props) => {
     const [fullName, setFullName] = useState('')
@@ -39,6 +41,8 @@ const Register = (props) => {
             errors.email = 'Email cannot be empty'
         } else if(!isEmail(email)){
             errors.email = 'Invalid Email Format'
+        } else if(email.includes('!') || email.includes('*') || email.includes('$') || email.includes('%')){
+            errors.email = 'Email cannot contain special characters'
         }
 
         //password validations
@@ -46,8 +50,6 @@ const Register = (props) => {
             errors.password = 'Password cannot be empty'
         } else if(password.length < 8 || password.length >128){
             errors.password = 'Password should be between 8 and 128 characters'
-        } else if(email.includes('!') || email.includes('*') || email.includes('$') || email.includes('%')){
-            errors.email = 'Email cannot contain special characters'
         }
     }
 
@@ -63,13 +65,15 @@ const Register = (props) => {
                 setFullName('')
                 setEmail('')
                 setPassword('')
+                dispatch(doRegisterToggle())
+                dispatch(doLoginToggle())
             }
 
             const formData = {
                 email, password , name : fullName.trim()
             } 
 
-            // dispatch(startLoginUser(formData, clearAndDispatch))
+            dispatch(startRegisterUser(formData, clearAndDispatch))
             
         } else {
             setFormErrors(errors)

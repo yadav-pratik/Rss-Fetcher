@@ -23,6 +23,24 @@ export const startLoginUser =  (formData, clearAndDispatch) => {
     )
 }
 
+export const startRegisterUser = (formData, clearAndDispatch) => {
+    return (
+        async () => {
+            try {
+                const { data } = await axios.post('http://localhost:3040/api/users/register',formData)
+                if(data.hasOwnProperty('errors')){
+                    normalAlert(data.message, 'info')
+                } else {
+                    normalAlert(data.success, 'success')
+                    clearAndDispatch()
+                }
+            } catch (error) {
+                normalAlert(error.message, 'error')
+            }
+        }
+    )
+}
+
 export const startGetUser = () => {
     return (
         async (dispatch) => {
