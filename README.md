@@ -71,7 +71,12 @@ And Start up the Front end by
 npm start
 ```
 
-Note : Add all the environment variables for best experience.
+Note : Add the following environment variables for best experience.
+
+1. SECRET_KEY (for JWT signing and verifying) 
+2. BASE_URL : 'https://api.rss2json.com/v1/api.json'
+3. ARTICLES_COUNT (no. of articles to get in one api call)
+4. API_KEY
 
 Visit the following link and Login to generate your api-key for the RSS to json API, and add your api-key inside the .env file.
 
